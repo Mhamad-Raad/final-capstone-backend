@@ -5,4 +5,6 @@ class Trip < ApplicationRecord
   validates :description, presence: true, length: { in: 2..300 }
   # add image here to storage
 
+  belongs_to :user
+  has_many :reservations
 end
