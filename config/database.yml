@@ -23,11 +23,11 @@ default: &default
 
 development:
   <<: *default
-  database: final_capstone_backend_development
-  host: localhost
-  port: 5432
-  username: dbsdmindev
-  password: db_admin
+  database: <%= ENV['DB'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,11 +61,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: final_capstone_backend_test
-  host: localhost
-  port: 5432
-  username: dbsdmindev
-  password: db_admin
+  database: <%= ENV['DB'] %>_test
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
