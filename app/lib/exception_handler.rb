@@ -12,23 +12,24 @@ module ExceptionHandler
       json_response({ message: e.message }, :unprocessable_entity)
     end
 
-    rescue_from ExceptionHandler::MissingToken do |e|
-      json_response({ msg:'Unable to process', error: {value: 'Missing Token', details: [] }}, :unprocessable_entity)
+    rescue_from ExceptionHandler::MissingToken do |_e|
+      json_response({ msg: 'Unable to process', error: { value: 'Missing Token', details: [] } }, :unprocessable_entity)
     end
 
-    rescue_from ExceptionHandler::InvalidToken do |e|
-      json_response({ msg:'Unable to process', error: {value: 'Invalid Token', details: [] }}, :unprocessable_entity)
+    rescue_from ExceptionHandler::InvalidToken do |_e|
+      json_response({ msg: 'Unable to process', error: { value: 'Invalid Token', details: [] } }, :unprocessable_entity)
     end
 
     rescue_from ActionController::ParameterMissing do |e|
-      json_response({ msg: 'Unable to process', error: {value: 'Required parameters missing', details: e.message }}, :unprocessable_entity)  
+      json_response({ msg: 'Unable to process', error: { value: 'Required parameters missing', details: e.message } },
+                    :unprocessable_entity)
     end
-  end  
+  end
 
   class MissingToken < StandardError; end
   class InvalidToken < StandardError; end
 
   def json_response(payload, status)
-    render json: payload, status: status
+    render json: payload, status:
   end
 end
