@@ -1,6 +1,8 @@
 class Api::V1::ReservationsController < ApplicationController
-
-  skip_before_action :verify_authenticity_token
+  # DEAR CoWroker is the line below this comment is needed, 
+  # I believe it has to do something with authentication token as the name says but the code doesnt seed to work without it ????
+  
+  # skip_before_action :verify_authenticity_token
 
   def index 
     @reservations = Reservation.all
