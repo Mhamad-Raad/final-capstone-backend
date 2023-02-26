@@ -1,17 +1,16 @@
 class Api::V1::ReservationsController < ApplicationController
-  # DEAR CoWroker is the line below this comment is needed, 
-  # I believe it has to do something with authentication token as the name says but the code doesnt seed to work without it ????
-  
+  # DEAR CoWroker is the line below this comment is needed,
+  # I believe it has to do something with authentication
+  # token as the name says but the code doesnt seed to work without it ????
+
   # skip_before_action :verify_authenticity_token
 
-  def index 
+  def index
     @reservations = Reservation.all
     render json: @reservations
   end
 
   def create
-    p reservation_params
-    p "hello there i am here"
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
       render json: @reservation, status: :created
