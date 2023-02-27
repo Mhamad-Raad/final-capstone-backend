@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do
     namespace :v1 do
+      post 'auth/sign_up', to: 'authentication#signup'
+      post 'auth/log_in', to: 'authentication#login'
       resources :users, only: [:show, :create, :update, :destroy]
       resources :trips, only: [:index, :show, :create, :update, :destroy]
       resources :reservations, only: [:create, :index]
