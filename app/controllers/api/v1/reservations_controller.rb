@@ -1,11 +1,12 @@
-class Api::V1::ReservationsController < ApplicationController
+class Api::V1::ReservationsController < Api::ApiController
   def index
-    @reservations = Reservation.find_by(user_id: current_user.id)
+    @reservations = Reservation.where(user_id: @current_user.id)
     render json: @reservations
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.new(user_id: @current_user.id, date: params[:date],
+    time: params[:time], departure_city: params[:departure_city], trip_id: params[:trip_id])
     if @reservation.save
       render json: @reservation, status: :created
     else
