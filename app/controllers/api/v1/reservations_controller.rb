@@ -5,9 +5,7 @@ class Api::V1::ReservationsController < Api::ApiController
   end
 
   def create
-    @reservation = Reservation.new(user_id: @current_user.id, date: params[:date],
-                                   time: params[:time],
-                                   departure_city: params[:departure_city], trip_id: params[:trip_id])
+    @reservation = Reservation.new(reservation_params)
     if @reservation.save
       render json: @reservation, status: :created
     else
@@ -19,5 +17,5 @@ class Api::V1::ReservationsController < Api::ApiController
 
   def reservation_params
     params.require(:reservation).permit(:user_id, :date, :time, :departure_city, :trip_id)
-  end
+  end
 end
