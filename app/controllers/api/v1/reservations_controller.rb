@@ -17,5 +17,5 @@ class Api::V1::ReservationsController < Api::ApiController
 
   def reservation_params
     params.require(:reservation).permit(:user_id, :date, :time, :departure_city, :trip_id)
-  end
+  end
 end
