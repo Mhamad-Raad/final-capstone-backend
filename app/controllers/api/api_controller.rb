@@ -1,6 +1,6 @@
 class Api::ApiController < ActionController::API
   include ExceptionHandler
-  before_action :authorize_request, except: %i[login signup]
+  # before_action :authorize_request, except: %i[login signup]
 
   def not_found
     render json: { msg: 'Unable to access token', error: 'Token not found' }, status: :unauthorized
