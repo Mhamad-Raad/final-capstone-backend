@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Reservations', type: :request do
+RSpec.describe 'ReservationsController', type: :request do
   before(:each) do
     post '/api/v1/auth/sign_up', params: {
       user: {

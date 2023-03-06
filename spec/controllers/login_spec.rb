@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Api::V1::AuthenticationController', type: :request do
+RSpec.describe 'AuthenticationController', type: :request do
   # rubocop:disable Lint/UselessAssignment
   describe 'POST /login' do
     email = 'test@test.com'

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Trips', type: :request do
+RSpec.describe 'TripsController', type: :request do
   before(:each) do
     Rails.application.routes.default_url_options[:host] = 'localhost:4000'
 
