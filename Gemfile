@@ -38,7 +38,7 @@ gem 'jbuilder'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
-# Google Cloud Storage for Active Storage 
+# Google Cloud Storage for Active Storage
 gem 'google-cloud-storage'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
