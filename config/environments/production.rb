@@ -26,8 +26,6 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Adding host link to production
-  config.action_mailer.default_url_options = { host: 'https://capstone-backend-gz9j.onrender.com' }
-
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
@@ -44,7 +42,8 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :google
+  config.active_storage.service = :google_cloud_storage
+  ENV["RAILS_ACTIVE_STORAGE_SERVICE"] = "google_cloud_storage"
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
