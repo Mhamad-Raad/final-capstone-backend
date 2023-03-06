@@ -15,7 +15,7 @@ local:
 #   bucket: your_own_bucket-<%= Rails.env %>
 
 # Remember not to checkin your GCS keyfile to a repository
- google:
+google:
   service: GCS
   project: bigstarstore
   credentials: <%= Rails.root.join("./config/bigstarstore-c27b2b15554e.json") %>
