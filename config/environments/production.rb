@@ -25,6 +25,9 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
+  # Adding host link to production
+  config.action_mailer.default_url_options = { host: 'https://capstone-backend-gz9j.onrender.com' }
+
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
