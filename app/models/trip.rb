@@ -1,4 +1,5 @@
 class Trip < ApplicationRecord
+  include Rails.application.routes.url_helpers
   validates :price, presence: true, numericality: { only_float: true, greater_than_or_equal_to: 0 }
   validates :rating, presence: true
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -15,6 +16,6 @@ class Trip < ApplicationRecord
   has_many :reservations
 
   def image_url
-    Rails.application.routes.url_helpers.url_for(image) if image.attached?
+    url_for(image)
   end
 end
