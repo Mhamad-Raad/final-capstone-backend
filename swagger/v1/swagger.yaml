@@ -118,6 +118,109 @@ paths:
                   - password
               required:
               - user
+  "/api/v1/reservations/":
+    post:
+      summary: create a reservation
+      tags:
+      - Reservations
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  trip_id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  date:
+                    type: string
+                  time:
+                    type: string
+                  departure_city:
+                    type: string
+                required:
+                - id
+                - trip_id
+                - user_id
+                - date
+                - time
+                - departure_city
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  error:
+                    type: string
+                required:
+                - reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                trip_id:
+                  type: integer
+                user_id:
+                  type: integer
+                date:
+                  type: string
+                time:
+                  type: string
+                departure_city:
+                  type: string
+              required:
+              - trip_id
+              - user_id
+              - date
+              - time
+              - departure_city
+    get:
+      summary: list all reservations
+      tags:
+      - Reservations
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  trip_id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  date:
+                    type: string
+                  time:
+                    type: string
+                  departure_city:
+                    type: string
+                required:
+                - id
+                - trip_id
+                - user_id
+                - date
+                - time
+                - departure_city
   "/api/v1/trips/":
     post:
       summary: create a trip
@@ -186,6 +289,46 @@ paths:
               - trip[description]
               - image
               - trip[user_id]
+    get:
+      summary: list all trips
+      tags:
+      - Trips
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trips:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        price:
+                          type: integer
+                        rating:
+                          type: integer
+                        destination_city:
+                          type: string
+                        description:
+                          type: string
+                        image_url:
+                          type: string
+                      required:
+                      - id
+                      - price
+                      - rating
+                      - destination_city
+                      - description
+                      - image_url
+                required:
+                - trips
   "/api/v1/trips/{id}":
     delete:
       summary: delete a trip
@@ -222,6 +365,59 @@ paths:
                     type: string
                 required:
                 - trip
+    get:
+      summary: show a trip
+      tags:
+      - Trips
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  price:
+                    type: integer
+                  rating:
+                    type: integer
+                  destination_city:
+                    type: string
+                  description:
+                    type: string
+                  image_url:
+                    type: string
+                required:
+                - id
+                - price
+                - rating
+                - destination_city
+                - description
+                - image_url
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  error:
+                    type: string
+                required:
+                - msg
+                - error
 components:
   securitySchemes:
     bearer_auth:

@@ -1,83 +1,81 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/authentication', type: :request do
-
   path '/api/v1/auth/sign_up' do
-
     post('signup authentication') do
       tags 'Users'
       consumes 'application/json'
-      security [ bearer_auth: [] ]
+      security [bearer_auth: []]
       parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
-          user:  {
+          user: {
             type: :object,
             properties: {
               name: { type: :string },
               email: { type: :string, format: :email },
               password: { type: :string }
             },
-            required: [ 'name', 'email', 'password' ]
+            required: %w[name email password]
           }
         },
-        required: [ 'user' ]
+        required: ['user']
       }
 
       response '200', 'user signed up' do
         schema type: :object,
-          properties: {
-            token: { type: :string },
-            exp: { type: :string },
-            user: { 
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-                email: { type: :string, format: :email }
-              },
-              required: [ 'name', 'email' ]
-            }
-          },
-        required: [ 'token', 'user' ]
-        
+               properties: {
+                 token: { type: :string },
+                 exp: { type: :string },
+                 user: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string },
+                     email: { type: :string, format: :email }
+                   },
+                   required: %w[name email]
+                 }
+               },
+               required: %w[token user]
+
         let(:user) { { name: 'user', email: 'user@test.com', password: '123456' } }
         run_test!
       end
 
       response '409', 'user already exists' do
         schema type: :object,
-          properties: {
-            msg: { type: :string },
-            error: { 
-              type: :object,
-              properties: {
-                value: { type: :string },
-                details: { type: :array, items: { type: 'string' } }
-              },
-              required: [ 'value', 'details' ]
-            }
-          },
-        required: [ 'msg', 'error' ]
+               properties: {
+                 msg: { type: :string },
+                 error: {
+                   type: :object,
+                   properties: {
+                     value: { type: :string },
+                     details: { type: :array, items: { type: 'string' } }
+                   },
+                   required: %w[value details]
+                 }
+               },
+               required: %w[msg error]
 
         let(:user) { { name: 'user', email: 'user@test.com', password: '123456' } }
         run_test!
       end
-      
+
       response '422', 'account creation failed validation error' do
         schema type: :object,
-          properties: {
-            msg: { type: :string },
-            error: { 
-              type: :object,
-              properties: {
-                value: { type: :string },
-                details: { type: :array, items: { type: 'string' } }
-              },
-              required: [ 'value', 'details' ]
-            }
-          },
-        required: [ 'msg', 'error' ]
+               properties: {
+                 msg: { type: :string },
+                 error: {
+                   type: :object,
+                   properties: {
+                     value: { type: :string },
+                     details: { type: :array, items: { type: 'string' } }
+                   },
+                   required: %w[value details]
+                 }
+               },
+               required: %w[msg error]
 
         let(:user) { { name: 'user', password: '123456' } }
         run_test!
@@ -93,53 +91,53 @@ RSpec.describe 'api/v1/authentication', type: :request do
       parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
-          user:  {
+          user: {
             type: :object,
             properties: {
               email: { type: :string, format: :email },
               password: { type: :string }
             },
-            required: [ 'email', 'password' ]
+            required: %w[email password]
           }
         },
-        required: [ 'user' ]
+        required: ['user']
       }
 
       response(200, 'successful') do
         schema type: :object,
-          properties: {
-            token: { type: :string },
-            exp: { type: :string },
-            user: { 
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-                email: { type: :string, format: :email }
-              },
-              required: [ 'name', 'email' ]
-            }
-          },
-        required: [ 'token', 'user' ]
-        
+               properties: {
+                 token: { type: :string },
+                 exp: { type: :string },
+                 user: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string },
+                     email: { type: :string, format: :email }
+                   },
+                   required: %w[name email]
+                 }
+               },
+               required: %w[token user]
+
         let(:user) { { email: 'user@test.com', password: '123456' } }
         run_test!
       end
 
       response '401', 'email is incorrect' do
         schema type: :object,
-          properties: {
-            msg: { type: :string },
-            error: { 
-              type: :object,
-              properties: {
-                value: { type: :string },
-                details: { type: :array, items: { type: 'string' } }
-              },
-              required: [ 'value', 'details' ]
-            }
-          },
-        required: [ 'msg', 'error' ]
+               properties: {
+                 msg: { type: :string },
+                 error: {
+                   type: :object,
+                   properties: {
+                     value: { type: :string },
+                     details: { type: :array, items: { type: 'string' } }
+                   },
+                   required: %w[value details]
+                 }
+               },
+               required: %w[msg error]
 
         let(:user) { { email: 'user@test.com', password: '123456' } }
         run_test!
@@ -147,18 +145,18 @@ RSpec.describe 'api/v1/authentication', type: :request do
 
       response '401', 'password is incorrect' do
         schema type: :object,
-          properties: {
-            msg: { type: :string },
-            error: { 
-              type: :object,
-              properties: {
-                value: { type: :string },
-                details: { type: :array, items: { type: 'string' } }
-              },
-              required: [ 'value', 'details' ]
-            }
-          },
-        required: [ 'msg', 'error' ]
+               properties: {
+                 msg: { type: :string },
+                 error: {
+                   type: :object,
+                   properties: {
+                     value: { type: :string },
+                     details: { type: :array, items: { type: 'string' } }
+                   },
+                   required: %w[value details]
+                 }
+               },
+               required: %w[msg error]
 
         let(:user) { { email: 'user@test.com', password: '123456' } }
         run_test!
