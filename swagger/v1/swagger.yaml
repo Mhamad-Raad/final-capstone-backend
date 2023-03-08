@@ -118,6 +118,116 @@ paths:
                   - password
               required:
               - user
+  "/api/v1/trips/":
+    post:
+      summary: create a trip
+      tags:
+      - Trips
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  price:
+                    type: integer
+                  rating:
+                    type: integer
+                  destination_city:
+                    type: string
+                  description:
+                    type: string
+                  image_url:
+                    type: string
+                required:
+                - trip
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  error:
+                    type: string
+                required:
+                - trip
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                trip[price]:
+                  type: integer
+                trip[rating]:
+                  type: integer
+                trip[destination_city]:
+                  type: string
+                trip[description]:
+                  type: string
+                trip[user_id]:
+                  type: integer
+                image:
+                  type: file
+              required:
+              - trip[price]
+              - trip[rating]
+              - trip[destination_city]
+              - trip[description]
+              - image
+              - trip[user_id]
+  "/api/v1/trips/{id}":
+    delete:
+      summary: delete a trip
+      tags:
+      - Trips
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: path
+        sxhema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: string
+                required:
+                - trip
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - trip
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 servers:
 - url: https://{defaultHost}
   variables:
