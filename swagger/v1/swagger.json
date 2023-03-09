@@ -393,7 +393,7 @@
       "url": "https://{defaultHost}",
       "variables": {
         "defaultHost": {
-          "default": "www.websiteName.com"
+          "default": "capstone-backend-gz9j.onrender.com"
         }
       }
     },
