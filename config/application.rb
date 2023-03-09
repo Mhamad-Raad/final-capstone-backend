@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module FinalCapstoneBackend
   class Application < Rails::Application
-    require 'swagger_ui_engine'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 

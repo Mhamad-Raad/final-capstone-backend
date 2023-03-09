@@ -5,8 +5,6 @@ ruby '3.1.3'
 
 # api documentation
 gem 'rswag'
-gem 'swagger-ui_rails'
-gem 'swagger_ui_engine'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
