@@ -106,12 +106,10 @@ RSpec.describe 'TripsController', type: :request do
         post '/api/v1/trips', params: trip_params, headers: { Authorization: "Bearer #{@token}" }
       end
 
-      # rubocop:disable Lint/EmptyBlock
       it 'does not create a new trip' do
         expect do
         end.to_not change(Trip, :count)
       end
-      # rubocop:enable Lint/EmptyBlock
 
       it 'returns a JSON response with errors' do
         expect(response).to have_http_status(:unprocessable_entity)
