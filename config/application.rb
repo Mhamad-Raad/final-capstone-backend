@@ -17,6 +17,7 @@ module FinalCapstoneBackend
         resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :options, :head]
       end
     end
+    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

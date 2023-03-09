@@ -17,13 +17,11 @@ RSpec.describe 'ReservationsController', type: :request do
     }
   end
 
-  # rubocop:disable Lint/UselessAssignment
   before(:each) do
     body = JSON.parse(response.body)
     user = body['user']
     @token = body['token']
   end
-  # rubocop:enable Lint/UselessAssignment
 
   let!(:trip) do
     Trip.create(
@@ -69,12 +67,10 @@ RSpec.describe 'ReservationsController', type: :request do
         post '/api/v1/reservations', params: reservation_params, headers: { Authorization: "Bearer #{@token}" }
       end
 
-      # rubocop:disable Lint/EmptyBlock
       it 'does not create a new reservation' do
         expect do
         end.to_not change(Reservation, :count)
       end
-      # rubocop:enable Lint/EmptyBlock
 
       it 'returns a JSON response with errors' do
         expect(response.content_type).to eq('application/json; charset=utf-8')

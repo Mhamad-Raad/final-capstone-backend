@@ -37,7 +37,6 @@ RSpec.describe 'AuthenticationController', type: :request do
       end
     end
 
-    # rubocop:disable Metrics/BlockLength
     context 'when invalid params are provided' do
       let(:invalid_params) do
         { user: { name: '', email: 'invalid-email', password: 'short' } }
@@ -54,13 +53,11 @@ RSpec.describe 'AuthenticationController', type: :request do
         expect(response).to have_http_status(:unprocessable_entity)
       end
 
-      # rubocop:disable Layout/LineLength:
       it 'returns an error message' do
         post '/api/v1/auth/sign_up', params: invalid_params
         expect(JSON.parse(response.body)['error']['details']).to include("Name can't be blank", 'Email is invalid',
                                                                          'Password is too short (minimum is 6 characters)')
       end
-      # rubocop:enable Layout/LineLength:
 
       it 'returns a correct JSON response' do
         post '/api/v1/auth/sign_up', params: invalid_params
@@ -78,7 +75,6 @@ RSpec.describe 'AuthenticationController', type: :request do
         }.to_json)
       end
     end
-    # rubocop:enable Metrics/BlockLength
 
     context 'when user already exists' do
       let(:existing_user) { User.create(name: 'newuser', email: 'newuser@example.com', password: 'password') }

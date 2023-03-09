@@ -1,15 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'AuthenticationController', type: :request do
-  # rubocop:disable Lint/UselessAssignment
   describe 'POST /login' do
     email = 'test@test.com'
     name = 'test'
     valid_credentials = { email:, password: 'password' }
     invalid_password = { email:, password: 'wrong' }
     invalid_email = { email: 'wrong@example.com', password: 'password' }
-
-    # rubocop:enable Lint/UselessAssignment
 
     before(:each) do
       post '/api/v1/auth/sign_up', params: {

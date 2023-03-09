@@ -8,7 +8,6 @@ class Trip < ApplicationRecord
   validates :description, presence: true, length: { in: 2..300 }
   validates :image, presence: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
                     size: { less_than: 5.megabytes }
-  # add image here to storage
 
   has_one_attached :image
 

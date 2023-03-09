@@ -1,0 +1,435 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/auth/sign_up":
+    post:
+      summary: signup authentication
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: user signed up
+        '409':
+          description: user already exists
+        '422':
+          description: account creation failed validation error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                      format: email
+                    password:
+                      type: string
+                  required:
+                  - name
+                  - email
+                  - password
+              required:
+              - user
+  "/api/v1/auth/log_in":
+    post:
+      summary: login authentication
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  exp:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+                        format: email
+                    required:
+                    - name
+                    - email
+                required:
+                - token
+                - user
+        '401':
+          description: password is incorrect
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  error:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                      details:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                    - value
+                    - details
+                required:
+                - msg
+                - error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
+              required:
+              - user
+  "/api/v1/reservations/":
+    post:
+      summary: create a reservation
+      tags:
+      - Reservations
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  trip_id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  date:
+                    type: string
+                  time:
+                    type: string
+                  departure_city:
+                    type: string
+                required:
+                - id
+                - trip_id
+                - user_id
+                - date
+                - time
+                - departure_city
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  error:
+                    type: string
+                required:
+                - reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                trip_id:
+                  type: integer
+                user_id:
+                  type: integer
+                date:
+                  type: string
+                time:
+                  type: string
+                departure_city:
+                  type: string
+              required:
+              - trip_id
+              - user_id
+              - date
+              - time
+              - departure_city
+    get:
+      summary: list all reservations
+      tags:
+      - Reservations
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  trip_id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  date:
+                    type: string
+                  time:
+                    type: string
+                  departure_city:
+                    type: string
+                required:
+                - id
+                - trip_id
+                - user_id
+                - date
+                - time
+                - departure_city
+  "/api/v1/trips/":
+    post:
+      summary: create a trip
+      tags:
+      - Trips
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  price:
+                    type: integer
+                  rating:
+                    type: integer
+                  destination_city:
+                    type: string
+                  description:
+                    type: string
+                  image_url:
+                    type: string
+                required:
+                - trip
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  error:
+                    type: string
+                required:
+                - trip
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                trip[price]:
+                  type: integer
+                trip[rating]:
+                  type: integer
+                trip[destination_city]:
+                  type: string
+                trip[description]:
+                  type: string
+                trip[user_id]:
+                  type: integer
+                image:
+                  type: file
+              required:
+              - trip[price]
+              - trip[rating]
+              - trip[destination_city]
+              - trip[description]
+              - image
+              - trip[user_id]
+    get:
+      summary: list all trips
+      tags:
+      - Trips
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trips:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        price:
+                          type: integer
+                        rating:
+                          type: integer
+                        destination_city:
+                          type: string
+                        description:
+                          type: string
+                        image_url:
+                          type: string
+                      required:
+                      - id
+                      - price
+                      - rating
+                      - destination_city
+                      - description
+                      - image_url
+                required:
+                - trips
+  "/api/v1/trips/{id}":
+    delete:
+      summary: delete a trip
+      tags:
+      - Trips
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: path
+        sxhema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: string
+                required:
+                - trip
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - trip
+    get:
+      summary: show a trip
+      tags:
+      - Trips
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  price:
+                    type: integer
+                  rating:
+                    type: integer
+                  destination_city:
+                    type: string
+                  description:
+                    type: string
+                  image_url:
+                    type: string
+                required:
+                - id
+                - price
+                - rating
+                - destination_city
+                - description
+                - image_url
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  error:
+                    type: string
+                required:
+                - msg
+                - error
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.websiteName.com
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:4000
