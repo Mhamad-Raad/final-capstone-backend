@@ -39,6 +39,7 @@ Our app's user-friendly interface allows you to get location, price, and ameniti
 
 <details>
   <summary>Client</summary>
+  <br>
   <ul> 
     <a href="https://github.com/microverseinc/linters-config/tree/master/ror">
       <img alt="ruby" width="135px"  height="35px" src="https://img.shields.io/badge/rubocop-4B3263?style=for-the-badge&logo=rubocop&logoColor=white" />
@@ -51,6 +52,7 @@ Our app's user-friendly interface allows you to get location, price, and ameniti
 </details>
 <details>
   <summary>Server</summary>
+  <br>
   <ul>
     <a href="https://www.ruby-lang.org/en/">
       <img alt="ruby" width="100px"  height="35px" src="https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white" />
@@ -80,9 +82,10 @@ Our app's user-friendly interface allows you to get location, price, and ameniti
 
 <details>
 <summary>Database</summary>
+  <br>
   <ul>
     <a href="https://www.postgresql.org/">
-      <img alt="postgresql" width="175px"  height="35px" src="https://img.shields.io/badge/Render-7B42BC?style=for-the-badge&logo=render&logoColor=white" />
+      <img alt="postgresql" width="130px"  height="35px" src="https://img.shields.io/badge/Render-7B42BC?style=for-the-badge&logo=render&logoColor=white" />
     </a>
   </ul>
 </details>
