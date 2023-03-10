@@ -29,7 +29,7 @@
 
 # 🚜 TravelVent <a name="about-the-project"></a>
 Introducing our travel app, designed to make reserving your dream trip a breeze. With just a few taps on your device, you can reserve a trip to your favourite destination.
-Our app's user-friendly interface allows you to get location, price, and amenities. You can also read reviews from other travelers to help you make the best decision for your trip. It allows users to create an account, login, and reserve a trip. It also allows users to view all available trips, and view a specific trip.
+Our app's user-friendly interface allows you to get location, price, and amenities. You can also get review ratings done by other travelers to help you make the best decision for your trip. It allows users to create an account, login, and reserve a trip. It also allows users to view all available trips, and view a specific trip.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -94,7 +94,7 @@ Our app's user-friendly interface allows you to get location, price, and ameniti
 
 _**Authenticate users:**_
 
-- _Create an account by providing a valid name, e-mail, and password with password confirmation. You will automatically be logged in._
+- _Create an account by providing a valid name, e-mail, and password with password confirmation._
 - _Once your account is created, you'll be automatically logged in and can access all of the app's features._
 
 _**Trips**:_
@@ -106,11 +106,11 @@ _**Trips**:_
 _**Add/Delete:**_
 
 - _If you want to add a new trip, just click on the **Add a Trip** link in the navigation panel, and you'll be directed to a page where you can fill out a form to add a new trip._
-- _If you want to delete a reservation, click on the **Delete a Trip** link in the navigation panel. You will be redirected to a page where you can see a list of all available trips from where you can delete a trip._
+- _If you want to delete a trip, click on the **Delete a Trip** link in the navigation panel. You will be redirected to a page where you can see a list of all available trips from where you can delete a trip._
 
 _**Reservations:**_
 
-- _To see all your reservations in one place, head to the My Reservations page. Here, you can see a list of all your reservations and view the details._
+- _To see all your reservations in one place, head to the My Reservations page. Here, you can see a list of all your reservations and get a glimpse of the details._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
