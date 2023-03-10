@@ -11,8 +11,6 @@
   - [🔍 API Endpoints ](#-api-endpoints-)
   - [🧾 Documentation ](#-documentation-)
   - [✒ Kanban Board ](#-kanban-board-)
-    - [Initial State](#initial-state)
-    - [Fina State](#fina-state)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -119,14 +117,14 @@ _**Reservations:**_
 ## 🚀 Live Preview <a name="live-demo"></a>
 > _Check out our live site to see our app in action! Click the link below to visit the site and try it out for yourself_
 
-  &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://capstone-backend-gz9j.onrender.com/">
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://remarkable-buttercream-3be0d2.netlify.app/">
     <img alt="live link" width="130px"  height="35px" src="https://img.shields.io/badge/Active-168363?style=for-the-badge&logo=render&logoColor=white" />
   </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔍 API Endpoints <a name="api-endpoints"></a>
-> _For developers who want to work with our app's data, we offer a set of API endpoints that you can use and integrate into your own project. See the link below_
+> _For developers who want to work with our app's data, we offer a set of API endpoints that you can use and integrate into your own project. Visit the link below as an example. To get all endpoints, see the documentation below_
 
  &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://capstone-backend-gz9j.onrender.com/api/v1/trips">
     <img alt="endpoints" width="170px"  height="35px" src="https://img.shields.io/badge/resources-F37626?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" />
@@ -146,7 +144,7 @@ _**Reservations:**_
 ## ✒ Kanban Board <a name="kanban-board"></a>
 > _We used a Kanban board to track the progress of tasks and issues. The board is designed to help visualize the status of work items, identify bottlenecks, and ensure that work is flowing smoothly._
 
-### Initial State
+ &nbsp;&nbsp;_**Initial State**_
   <details>
     <summary>Frontend</summary>
     
@@ -159,7 +157,7 @@ _**Reservations:**_
   ![backend](https://user-images.githubusercontent.com/106119105/220791991-eac8b48f-051e-4fd5-9cf2-8157d570ae12.PNG)
   </details>
 
-### Fina State
+ &nbsp;&nbsp;_**Final State**_
   <details>
     <summary>Frontend</summary>
     
@@ -302,11 +300,14 @@ If you like this project please give it a ⭐️!
 
 Thank you to microverse for setting us on this journey.
 
+We would like to thank [Murat Korkmaz](https://www.behance.net/muratk) for the design guidelines.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- LICENSE -->
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
