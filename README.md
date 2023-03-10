@@ -119,7 +119,6 @@ In order to run this project you need: ``` Ruby ```, ``` Rails ``` and a Databas
 
 Clone these repositories to your desired folder with:
 
-```
   git clone https://github.com/Mhamad-Raad/final-capstone-frontend.git
   git clone https://github.com/Mhamad-Raad/final-capstone-backend.git
 
@@ -127,20 +126,30 @@ Clone these repositories to your desired folder with:
 
 Install this project with:
 
-```
+
   bundle install
+  rails db:create
   rails db:migrate
-```
+  rails db:seed
+
 
 ### Usage
 
 To run the project, execute the following command:
 
-```
+
 rails server to run the backend server
   
 npm start to run the frontend server
-```
+
+### Run tests
+
+to run the tests, execute the following command:
+
+  rspec . to run the backend tests
+
+  rspect "test file name" to run a specific test
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -167,7 +176,7 @@ npm start to run the frontend server
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- Add the rest of the necessary features for a functional blog.
+- Add the rest of the necessary features for the app to be fully functional.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
