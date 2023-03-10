@@ -7,7 +7,7 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
-  - [🚀 Live Preview ](#-live-preview-)
+  - [🚀 Front End Link ](#-front-end-link-)
   - [🔍 API Endpoints ](#-api-endpoints-)
   - [🧾 Documentation ](#-documentation-)
   - [✒ Kanban Board ](#-kanban-board-)
@@ -114,11 +114,11 @@ _**Reservations:**_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🚀 Live Preview <a name="live-demo"></a>
-> _Check out our live site to see our app in action! Click the link below to visit the site and try it out for yourself_
+## 🚀 Front End Link <a name="live-demo"></a>
+> _Our frontend code is built using React and Redux and is hosted on a separate repository. The frontend handles the user interface and integrates with our backend API to retrieve and display data. Click the link below to get front end code_
 
   &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://remarkable-buttercream-3be0d2.netlify.app/">
-    <img alt="live link" width="130px"  height="35px" src="https://img.shields.io/badge/Active-168363?style=for-the-badge&logo=render&logoColor=white" />
+    <img alt="live link" width="170px"  height="35px" src="https://img.shields.io/badge/frontend-0075A8?style=for-the-badge&logo=react&logoColor=61DAFB" />
   </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
