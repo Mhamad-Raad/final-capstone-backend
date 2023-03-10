@@ -1,0 +1,409 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/auth/sign_up": {
+      "post": {
+        "summary": "signup authentication",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "bearer_auth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "email",
+                    "password"
+                  ]
+                }
+              },
+              "required": [
+                "user"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user signed up",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string"
+                },
+                "exp": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "email"
+                  ]
+                }
+              },
+              "required": [
+                "token",
+                "user"
+              ]
+            }
+          },
+          "409": {
+            "description": "user already exists",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string"
+                },
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "value",
+                    "details"
+                  ]
+                }
+              },
+              "required": [
+                "msg",
+                "error"
+              ]
+            }
+          },
+          "422": {
+            "description": "account creation failed validation error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string"
+                },
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "value",
+                    "details"
+                  ]
+                }
+              },
+              "required": [
+                "msg",
+                "error"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/log_in": {
+      "post": {
+        "summary": "login authentication",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "email",
+                    "password"
+                  ]
+                }
+              },
+              "required": [
+                "user"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string"
+                },
+                "exp": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "email"
+                  ]
+                }
+              },
+              "required": [
+                "token",
+                "user"
+              ]
+            }
+          },
+          "401": {
+            "description": "password is incorrect",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string"
+                },
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "value",
+                    "details"
+                  ]
+                }
+              },
+              "required": [
+                "msg",
+                "error"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trips/": {
+      "post": {
+        "summary": "create trip c",
+        "tags": [
+          "Trips"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "trip",
+            "in": "formData",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "type": "integer"
+                },
+                "rating": {
+                  "type": "integer"
+                },
+                "destination_city": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "user_id": {
+                  "type": "integer"
+                },
+                "image": {
+                  "type": "file"
+                }
+              },
+              "required": [
+                "price",
+                "rating",
+                "destination_city",
+                "description",
+                "image",
+                "user_id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "trip": {
+                  "type": "object",
+                  "properties": {
+                    "price": {
+                      "type": "integer"
+                    },
+                    "rating": {
+                      "type": "integer"
+                    },
+                    "destination_city": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "image": {
+                      "type": "file"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "price",
+                    "rating",
+                    "destination_city",
+                    "description",
+                    "image",
+                    "user_id"
+                  ]
+                }
+              },
+              "required": [
+                "trip"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securityDefinitions": {
+      "Bearer": {
+        "description": "...",
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{defaultHost}",
+      "variables": {
+        "defaultHost": {
+          "default": "capstone-backend-gz9j.onrender.com"
+        }
+      }
+    },
+    {
+      "url": "http://{defaultHost}",
+      "variables": {
+        "defaultHost": {
+          "default": "localhost:4000"
+        }
+      }
+    }
+  ]
+}
