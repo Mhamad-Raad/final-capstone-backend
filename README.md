@@ -83,7 +83,7 @@ Our app's user-friendly interface allows you to get location, price, and ameniti
   <br>
   <ul>
     <a href="https://www.postgresql.org/">
-      <img alt="postgresql" width="130px"  height="35px" src="https://img.shields.io/badge/Render-7B42BC?style=for-the-badge&logo=render&logoColor=white" />
+      <img alt="postgresql" width="180px"  height="35px" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
     </a>
   </ul>
 </details>
